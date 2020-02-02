@@ -3,6 +3,7 @@ import { terser } from 'rollup-plugin-terser'
 import replace from '@rollup/plugin-replace'
 import filesize from 'rollup-plugin-filesize'
 import resolve from 'rollup-plugin-node-resolve'
+import copy from 'rollup-plugin-copy-assets'
 
 export default {
   input: 'src/app.js',
@@ -20,7 +21,12 @@ export default {
       include: 'node_modules/**',
       preferBuiltins: true
     }),
-    filesize(),
-    terser()
+    terser(),
+    copy({
+      assets: [
+        './src/assets'
+      ]
+    }),
+    filesize()
   ]
 }
