@@ -1,0 +1,27 @@
+{
+  "name": "phoenix-pong",
+  "version": "0.0.1",
+  "description": "Port of ownCloud pong to Phoenix",
+  "repository": "https://github.com/LukasHirt/phoenix-pong",
+  "author": "<lukashirt@mail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/**/*.vue src/**/*.js --color",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^2.3.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "rollup": "^1.30.1",
+    "rollup-plugin-filesize": "^6.2.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-vue": "^5.1.6"
+  }
+}
