@@ -29,7 +29,7 @@ import { Pong } from '../game/pong.js'
 export default {
   name: 'App',
 
-  created () {
+  mounted () {
     this.init()
   },
 
