@@ -113,7 +113,7 @@ export const Pong = {
   goal: function (playerNo) {
     this.sounds.goal()
     this.scores[playerNo] += 1
-    if (this.scores[playerNo] == 9) {
+    if (this.scores[playerNo] === 9) {
       this.menu.declareWinner(playerNo)
       this.stop()
     } else {
@@ -193,7 +193,7 @@ export const Pong = {
     draw: function (ctx) {
       ctx.drawImage(this.press1.image, this.press1.x, this.press1.y)
       ctx.drawImage(this.press2.image, this.press2.x, this.press2.y)
-      if (this.winner == 0) { ctx.drawImage(this.winner1.image, this.winner1.x, this.winner1.y) } else if (this.winner == 1) { ctx.drawImage(this.winner2.image, this.winner2.x, this.winner2.y) }
+      if (this.winner === 0) { ctx.drawImage(this.winner1.image, this.winner1.x, this.winner1.y) } else if (this.winner === 1) { ctx.drawImage(this.winner2.image, this.winner2.x, this.winner2.y) }
     }
 
   },
@@ -343,7 +343,7 @@ export const Pong = {
       if (this.auto) { this.ai(dt, ball) }
 
       var amount = this.down - this.up
-      if (amount != 0) {
+      if (amount !== 0) {
         var y = this.y + (amount * dt * this.speed)
         if (y < this.minY) { y = this.minY } else if (y > this.maxY) { y = this.maxY }
         this.setpos(this.x, y)
@@ -451,8 +451,8 @@ export const Pong = {
 
     reset: function (playerNo) {
       this.footprints = []
-      this.setpos(playerNo == 1 ? this.maxX : this.minX, Game.random(this.minY, this.maxY))
-      this.setdir(playerNo == 1 ? -this.speed : this.speed, this.speed)
+      this.setpos(playerNo === 1 ? this.maxX : this.minX, Game.random(this.minY, this.maxY))
+      this.setdir(playerNo === 1 ? -this.speed : this.speed, this.speed)
     },
 
     setpos: function (x, y) {
@@ -465,8 +465,8 @@ export const Pong = {
     },
 
     setdir: function (dx, dy) {
-      this.dxChanged = ((this.dx < 0) != (dx < 0)) // did horizontal direction change
-      this.dyChanged = ((this.dy < 0) != (dy < 0)) // did vertical direction change
+      this.dxChanged = ((this.dx < 0) !== (dx < 0)) // did horizontal direction change
+      this.dyChanged = ((this.dy < 0) !== (dy < 0)) // did vertical direction change
       this.dx = dx
       this.dy = dy
     },
@@ -549,7 +549,7 @@ export const Pong = {
 
     intercept: function (x1, y1, x2, y2, x3, y3, x4, y4, d) {
       var denom = ((y4 - y3) * (x2 - x1)) - ((x4 - x3) * (y2 - y1))
-      if (denom != 0) {
+      if (denom !== 0) {
         var ua = (((x4 - x3) * (y1 - y3)) - ((y4 - y3) * (x1 - x3))) / denom
         if ((ua >= 0) && (ua <= 1)) {
           var ub = (((x2 - x1) * (y1 - y3)) - ((y2 - y1) * (x1 - x3))) / denom
