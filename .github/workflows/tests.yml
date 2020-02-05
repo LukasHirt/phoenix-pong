@@ -1,0 +1,36 @@
+name: Tests
+
+on: [pull_request]
+
+jobs:
+  lint-test:
+    name: Lint test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Lint test
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: yarn install
+    - run: yarn lint
+      env:
+        CI: true
+    
+  build:
+    name: Build
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: yarn install
+    - run: yarn build
+      env:
+        CI: true
