@@ -1,23 +1,6 @@
 <template>
   <div id="pong" class="uk-width-1-1" uk-height-viewport>
-    <div id="sidebar">
-      <div class='settings'>
-        <label for='sound'>sound: </label>
-        <input type='checkbox' id='sound'>
-      </div>
-      <div class='settings'>
-        <label for='stats'>stats: </label>
-        <input type='checkbox' id='stats' checked>
-      </div>
-      <div class='settings'>
-        <label for='footprints'>footprints: </label>
-        <input type='checkbox' id='footprints'>
-      </div>
-      <div class='settings'>
-        <label for='predictions'>predictions: </label>
-        <input type='checkbox' id='predictions'>
-      </div>
-    </div>
+    <sidebar @hook:mounted="init" />
     <canvas id="game" />
   </div>
 </template>
@@ -25,12 +8,13 @@
 <script>
 import { Game } from '../game/game.js'
 import { Pong } from '../game/pong.js'
+import Sidebar from './sidebar/Sidebar.vue'
 
 export default {
   name: 'App',
 
-  mounted () {
-    this.init()
+  components: {
+    Sidebar
   },
 
   methods: {
