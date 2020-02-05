@@ -13,6 +13,8 @@
 //= ============================================================================
 
 if (!Function.prototype.bind) {
+  // FIXME: Fix eslint error
+  // eslint-disable-next-line no-extend-native
   Function.prototype.bind = function (obj) {
     var slice = [].slice
     var args = slice.call(arguments, 1)
@@ -22,6 +24,8 @@ if (!Function.prototype.bind) {
       return self.apply(this instanceof nop ? this : (obj || {}), args.concat(slice.call(arguments)))
     }
     nop.prototype = self.prototype
+    // FIXME: Fix eslint error
+    // eslint-disable-next-line new-cap
     bound.prototype = new nop()
     return bound
   }
@@ -46,6 +50,8 @@ if (!Object.construct) {
 if (!Object.extend) {
   Object.extend = function (destination, source) {
     for (var property in source) {
+      // FIXME: Fix eslint error
+      // eslint-disable-next-line no-prototype-builtins
       if (source.hasOwnProperty(property)) { destination[property] = source[property] }
     }
     return destination
@@ -91,7 +97,7 @@ export const Game = {
     key = key || ((ua.indexOf('msie') > -1) ? 'ie' : null)
 
     try {
-      var re = (key == 'ie') ? 'msie (\\d)' : key + '\\/(\\d\\.\\d)'
+      var re = (key === 'ie') ? 'msie (\\d)' : key + '\\/(\\d\\.\\d)'
       var matches = ua.match(new RegExp(re, 'i'))
       var version = matches ? parseFloat(matches[1]) : null
     } catch (e) {}
@@ -100,11 +106,11 @@ export const Game = {
       full: ua,
       name: key + (version ? ' ' + version.toString() : ''),
       version: version,
-      isFirefox: (key == 'firefox'),
-      isChrome: (key == 'chrome'),
-      isSafari: (key == 'safari'),
-      isOpera: (key == 'opera'),
-      isIE: (key == 'ie'),
+      isFirefox: (key === 'firefox'),
+      isChrome: (key === 'chrome'),
+      isSafari: (key === 'safari'),
+      isOpera: (key === 'opera'),
+      isIE: (key === 'ie'),
       hasCanvas: (document.createElement('canvas').getContext),
       hasAudio: (typeof (Audio) !== 'undefined')
     }
@@ -134,14 +140,14 @@ export const Game = {
   loadImages: function (sources, callback) { /* load multiple images and callback when ALL have finished loading */
     var images = {}
     var count = sources ? sources.length : 0
-    if (count == 0) {
+    if (count === 0) {
       callback(images)
     } else {
       for (var n = 0; n < sources.length; n++) {
         var source = sources[n]
         var image = document.createElement('img')
         images[source] = image
-        Game.addEvent(image, 'load', function () { if (--count == 0) callback(images) })
+        Game.addEvent(image, 'load', function () { if (--count === 0) callback(images) })
         image.src = source
       }
     }
@@ -250,7 +256,7 @@ export const Game = {
         this.stats.update = Math.max(1, update)
         this.stats.draw = Math.max(1, draw)
         this.stats.frame = this.stats.update + this.stats.draw
-        this.stats.count = this.stats.count == this.fps ? 0 : this.stats.count + 1
+        this.stats.count = this.stats.count === this.fps ? 0 : this.stats.count + 1
         this.stats.fps = Math.min(this.fps, 1000 / this.stats.frame)
       }
     },
