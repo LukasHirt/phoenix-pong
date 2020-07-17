@@ -4,6 +4,9 @@ import replace from '@rollup/plugin-replace'
 import filesize from 'rollup-plugin-filesize'
 import resolve from 'rollup-plugin-node-resolve'
 import copy from 'rollup-plugin-copy-assets'
+import serve from 'rollup-plugin-serve'
+
+const dev = process.env.ROLLUP_WATCH
 
 export default {
   input: 'src/app.js',
@@ -13,7 +16,7 @@ export default {
   },
   plugins: [
     vue(),
-    replace({
+    !dev && replace({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     resolve({
@@ -27,6 +30,7 @@ export default {
         './src/assets'
       ]
     }),
-    filesize()
+    filesize(),
+    dev && serve('dist')
   ]
 }

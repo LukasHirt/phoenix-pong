@@ -1,6 +1,8 @@
 ## How to build
 
 ```
-yarn
+yarn install
 yarn build
 ```
+
+For dev server run `yarn watch`
