@@ -4,10 +4,7 @@ import { Game } from './game.js'
 // PONG
 //= ============================================================================
 
-// FIXME: Adjust as soon as Phoenix is capable of loading assets
-const url = window.location.href
-const pathname = window.location.pathname
-const baseUrl = url.slice(0, url.indexOf(pathname))
+const baseUrl = new URL(import.meta.url).origin
 
 export const Pong = {
 
@@ -34,9 +31,9 @@ export const Pong = {
   },
 
   Images: [
-    `${baseUrl}/apps/pong/assets/img/press1.png`,
-    `${baseUrl}/apps/pong/assets/img/press2.png`,
-    `${baseUrl}/apps/pong/assets/img/winner.png`
+    `${baseUrl}/assets/img/press1.png`,
+    `${baseUrl}/assets/img/press2.png`,
+    `${baseUrl}/assets/img/winner.png`
   ],
 
   Levels: [
@@ -177,9 +174,9 @@ export const Pong = {
   Menu: {
 
     initialize: function (pong) {
-      var press1 = pong.images[`${baseUrl}/apps/pong/assets/img/press1.png`]
-      var press2 = pong.images[`${baseUrl}/apps/pong/assets/img/press2.png`]
-      var winner = pong.images[`${baseUrl}/apps/pong/assets/img/winner.png`]
+      var press1 = pong.images[`${baseUrl}/assets/img/press1.png`]
+      var press2 = pong.images[`${baseUrl}/assets/img/press2.png`]
+      var winner = pong.images[`${baseUrl}/assets/img/winner.png`]
       this.press1 = { image: press1, x: 10, y: pong.cfg.wallWidth }
       this.press2 = { image: press2, x: (pong.width - press2.width - 10), y: pong.cfg.wallWidth }
       this.winner1 = { image: winner, x: (pong.width / 2) - winner.width - pong.cfg.wallWidth, y: 6 * pong.cfg.wallWidth }
@@ -209,10 +206,10 @@ export const Pong = {
       this.supported = Game.ua.hasAudio
       if (this.supported) {
         this.files = {
-          ping: Game.createAudio('apps/pong/assets/sounds/ping.wav'),
-          pong: Game.createAudio('apps/pong/assets/sounds/pong.wav'),
-          wall: Game.createAudio('apps/pong/assets/sounds/wall.wav'),
-          goal: Game.createAudio('apps/pong/assets/sounds/goal.wav')
+          ping: Game.createAudio(`${baseUrl}/assets/sounds/ping.wav`),
+          pong: Game.createAudio(`${baseUrl}/assets/sounds/pong.wav`),
+          wall: Game.createAudio(`${baseUrl}/assets/sounds/wall.wav`),
+          goal: Game.createAudio(`${baseUrl}/assets/sounds/goal.wav`)
         }
       }
     },
@@ -223,8 +220,8 @@ export const Pong = {
 
     ping: function () { this.play('ping') },
     pong: function () { this.play('pong') },
-    wall: function () { /* this.play('wall'); */ },
-    goal: function () { /* this.play('goal'); */ }
+    wall: function () { this.play('wall') },
+    goal: function () { this.play('goal') }
 
   },
 
