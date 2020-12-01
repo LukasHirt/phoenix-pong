@@ -3027,10 +3027,10 @@ rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-rollup-plugin-copy-assets@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-copy-assets/-/rollup-plugin-copy-assets-2.0.1.tgz#a95956fa504e409d72d2303650ad9e537b65f9b4"
-  integrity sha512-GfSvObeVcCmL1df22JNgdSVDmCP73ackhCfw5xE7sV/tKtdh79nwkwpHJ8JjeeAC5swfnLHHivFb7xPz85n8+g==
+rollup-plugin-copy-assets@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-copy-assets/-/rollup-plugin-copy-assets-2.0.3.tgz#9a9098894c3ded16d2eee8c4108055e332b5f59f"
+  integrity sha512-ETShhQGb9SoiwcNrvb3BhUNSGR89Jao0+XxxfzzLW1YsUzx8+rMO4z9oqWWmo6OHUmfNQRvqRj0cAyPkS9lN9w==
   dependencies:
     fs-extra "^7.0.1"
 

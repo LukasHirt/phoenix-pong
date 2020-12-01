@@ -21,7 +21,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.1.0",
     "rollup": "^2.34.0",
-    "rollup-plugin-copy-assets": "^2.0.1",
+    "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-serve": "^1.1.0",
